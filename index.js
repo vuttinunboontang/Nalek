@@ -13,6 +13,8 @@ async function main() {
 }
 main()
 
+var database = firebase.database();
+
 async function getUserProfile() {
   const profile = await liff.getProfile()
   document.getElementById("pictureUrl").src = profile.pictureUrl
