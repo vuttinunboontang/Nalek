@@ -28,6 +28,7 @@ main()
 
 async function getUserProfile() {
   const profile = await liff.getProfile()
+  var userId = profile.userId
   document.getElementById("pictureUrl").src = profile.pictureUrl
   document.getElementById("userId").append(profile.userId)
   document.getElementById("statusMessage").append(profile.statusMessage)
@@ -44,7 +45,7 @@ async function getUserProfile() {
 
 function saveDataToDatabase(data) {
   // สร้างรายการใหม่ในฐานข้อมูล
-  const newRef = database.ref('ชื่อโหนดในฐานข้อมูล').push();
+  const newRef = database.ref(userId).push();
 
   // กำหนดค่าข้อมูลให้กับรายการใหม่
   newRef.set(data)
