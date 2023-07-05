@@ -20,4 +20,18 @@ async function getUserProfile() {
   document.getElementById("statusMessage").append(profile.statusMessage)
   document.getElementById("displayName").append(profile.displayName)
   document.getElementById("docodedIDToken").append(liff.getDecodedIDToken().email)
+  var userData = {
+    pictureUrl: profile.pictureUrl,
+    userId: profile.userId,
+    displayName: profile.displayName,
+    email: liff.getDecodedIDToken().email
+  };
 }
+
+database.ref("users").push(userData)
+  .then(function() {
+    console.log("Data saved successfully.");
+  })
+  .catch(function(error) {
+    console.log("Error:", error);
+  });
